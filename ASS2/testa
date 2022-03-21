@@ -1,0 +1,5 @@
+#!/bin/sh
+if test -a "$1"
+then
+echo "$1 exist"
+fi

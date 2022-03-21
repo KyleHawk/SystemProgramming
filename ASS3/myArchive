@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [[ $# == 0 ]]; then
+    echo "Usage:myArchive [-t targetDir] [-a arcDir] <extension-list>."
+    exit
+fi
+
+#default target directory and default archive directory
+targetDir=./
+arcDir=./arcDir
+
+#Modify the two directories according to the parameters
+while getopts 'a:t:' OPT; do
+    case $OPT in
+        a) arcDir="$OPTARG";;
+        t) targetDir="$OPTARG";;
+        ?) echo "One parameter is wrong";;
+    esac
+done
+
+#if archive directory don't exist create one
+if [[ ! -d "$arcDir" ]]; then
+    mkdir $arcDir
+fi
+
+#check if target-directory exists and if it has write permission
+if [[ ! -w "$targetDir" ]]; then
+    echo "the target directory is wrong"
+    exit
+fi
+
+
+echo "target directory: $targetDir"
+echo "archive Directory: $arcDir"
+
+for extension in "$@"
+do
+    if [[ $extension != "-a" && $extension != "-t" && $extension != "$targetDir" && $extension != "$arcDir" ]];
+    then
+
+    echo "extension: $extension"
+    find $targetDir -name "*.$extension" | xargs -i mv {} $arcDir      #searches all files whose extensions are "$extension" then move them
+
+    fi
+done
+ 

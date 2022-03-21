@@ -1,0 +1,45 @@
+#!/bin/bash
+#get the target directory and archive directory - Kuo Han(#110039034)
+if [ ! -n "$3" ]
+	then
+		if [ ! -n "$1" ];                           #don't have parameter
+		then 
+			tarPath=$(dirname $( readlink -f "$0"))		
+			arcPath=$tarPath
+			echo "1 target Path is $tarPath"
+			echo "2 archive Path is $arcPath"
+		else                                        #only have archive Path
+			tarPath=$(dirname $( readlink -f "$0"))
+			arcPath=$2
+			echo "3 target Path is $tarPath"
+			echo "4 archive Path is $arcPath"
+		fi
+else        										#have target directory and archive directory                         
+    if test $3 = "-a"								#Use #3 to determine the archive directory
+        then
+        tarPath=$2		
+        arcPath=$4
+        echo "5 target Path is $tarPath"
+        echo "6 archive Path is $arcPath"
+    else
+        tarPath=$4		
+        arcPath=$2
+        echo "7 target Path is $tarPath"
+        echo "8 archive Path is $arcPath"
+    fi
+	
+fi
+
+date=`date +%b%d%Y`                    #get Month+Day+Year
+
+
+for file_a in ${tarPath}/*				# get all file name in target directory
+do  
+      
+    if test -d $file_a					# judge if file is directory
+    then
+        echo "9 zip directory $file_a"
+		temp_file=`basename $file_a`					#get directory name
+        tar -zcvPf $arcPath/$temp_file$date.tar $file_a    # use tar to zip folder
+    fi
+done

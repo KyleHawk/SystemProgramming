@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "hello world!"
+if [ -n "$1" ]
+	then
+	curPath=$(dirname $(readlink -f "$0"))
+	echo "this is $curPath"
+elif test -f "$0"
+then
+	echo "have other paramester $0"
+fi

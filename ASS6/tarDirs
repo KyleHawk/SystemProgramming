@@ -1,0 +1,8 @@
+#!/#!/bin/bash
+ls
+ls|grep -v txt|wc -w
+date;echo I printed today date
+ps -ef
+more file.txt|grep bigFoot
+
+
