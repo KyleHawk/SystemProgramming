@@ -1,5 +1,5 @@
 #!/bin/bash
-#get the target directory and archive directory - Kuo Han(#110039034)
+#get the target directory and archive directory - Kyle
 if [ ! -n "$3" ]
 	then
 		if [ ! -n "$1" ];                           #don't have parameter

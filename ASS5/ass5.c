@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-//Author:Kuo Han
-//Student#: 110039034
+//Author:Kyle
+
 
 int main(int argc, char *argv[])
 {

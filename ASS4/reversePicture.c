@@ -10,7 +10,7 @@
 
 /* the name of original picture saved in argv[1]
  The file name after the scroll down is saved in argv[2]*/
-//Kuo Han was compiled on November 4, 2021
+//Kyle was compiled on November 4, 2021
 
 int main(int argc, char *argv[])
 {
